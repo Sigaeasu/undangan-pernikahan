@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,jsx}", 
    ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poiret: ['"Poiret One"', 'cursive'],
+        funnel: ['"Funnel Display"', 'cursive'],
+        delius: ['Delius', 'cursive'],
+      },
+    },
   },
   plugins: [],
 }
