@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import './App.css';
 
 import FooterSection from './sections/FooterSection';
 import GallerySection from './sections/GallerySection';
 import GiftSection from './sections/GiftSection';
+import OpeningSection from './sections/OpeningSection';
 
 import BrideGroomBox from './components/BrideGroomBox';
 import LocationInfo from './components/LocationInfo';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   const basePath = import.meta.env.BASE_URL;
 
@@ -18,20 +17,10 @@ function App() {
       className="h-screen overflow-y-scroll snap-y snap-mandatory"
     >
       {/* Opening Section */}
-      <section className="section-container primary-bg">
-
-      {/* <section className="h-screen flex flex-col items-center justify-center snap-start"> */}
-        <p className='font-funnel primary-text'>YOU ARE INVITED TO OUR WEDDING!</p>
-        <img src={`${basePath}av_logo.png`} alt="Logo" width={500} height={500} className="mb-6" />
-        <p className='font-funnel'>Dear</p>
-        <p className='font-funnel'>MICHAEL</p>
-        <button 
-          className="font-funnel bg-transparent border border-gray-400 text-gray-700 font-semibold py-2 px-4 rounded hover:bg-g mt-5 active:scale-95"
-        >Open Invitation</button>
-      </section>
+      <OpeningSection />
 
       {/* Section Kedua */}
-      <section className="section-container p-[20px] space-y-8 overflow-hidden">
+      <section id='BrideGroom' className="section-container p-[20px] space-y-8 overflow-hidden">
 
         <div className="absolute top-0 left-0 w-32 h-32 bg-[url('/corner-leaf.png')] bg-contain bg-no-repeat rotate-180"></div>
         <div className="absolute bottom-0 right-0 w-32 h-32 bg-[url('/corner-leaf.png')] bg-contain bg-no-repeat "></div>

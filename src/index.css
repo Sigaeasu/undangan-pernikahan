@@ -16,6 +16,10 @@ html {
   background-color: var(--background);
 }
 
+.primary-text-bg {
+  background-color: var(--primaryText);
+}
+
 .primary-text {
   color: var(--primaryText);
 }
