@@ -1,48 +1,56 @@
 import './App.css';
 
+import { useRef, useState } from 'react';
+
 import FooterSection from './sections/FooterSection';
 import GallerySection from './sections/GallerySection';
 import GiftSection from './sections/GiftSection';
 import OpeningSection from './sections/OpeningSection';
+import ProfileSection from './sections/ProfileSection';
 
-import BrideGroomBox from './components/BrideGroomBox';
 import LocationInfo from './components/LocationInfo';
 
 function App() {
 
   const basePath = import.meta.env.BASE_URL;
 
+  const audioRef = useRef(null);
+  const [showPlayButton, setshowPlayButton] = useState(false);
+  const [mute, setMute] = useState(true);
+
+  const handleOpenInvitation = () => {
+    // Unmute & play music
+    if (audioRef.current) {
+      audioRef.current.muted = false;
+      audioRef.current.play();
+      setMute(false);
+    }
+    // Show mute button
+    setshowPlayButton(true);
+
+    // Scroll ke section berikut
+    document.getElementById("BrideGroom")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    audioRef.current.muted = !mute;
+    setMute(!mute);
+  };
+
   return (
     <main
       className="h-screen overflow-y-scroll snap-y snap-mandatory"
     >
+      <audio ref={audioRef} loop>
+        <source src={`${basePath}song.mp3`} type="audio/mpeg" />
+      </audio>
+
       {/* Opening Section */}
-      <OpeningSection />
+      <OpeningSection onOpenInvitation={handleOpenInvitation} />
 
       {/* Section Kedua */}
-      <section id='BrideGroom' className="section-container p-[20px] space-y-8 overflow-hidden">
-
-        <div className="absolute top-0 left-0 w-32 h-32 bg-[url('/corner-leaf.png')] bg-contain bg-no-repeat rotate-180"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 bg-[url('/corner-leaf.png')] bg-contain bg-no-repeat "></div>
-      
-        <h1 className='primary-text font-funnel text-[36px]'>Groom & Bride</h1>
-        
-        {/* Box Pengantin Pria */}
-        <BrideGroomBox 
-          image={`${basePath}men.png`}
-          name="Nama Pengantin Pria"
-          parentTitle="Anak Pertama Dari"
-          parents={["Nama Orang Tua Pria", "Nama Orang Tua Pria"]}
-        />
-
-        <BrideGroomBox 
-          image={`${basePath}women.png`}
-          name="Nama Pengantin Wanita"
-          parentTitle="Anak Pertama Dari"
-          parents={["Nama Orang Tua Wanita", "Nama Orang Tua Wanita"]}
-          reverse
-        />
-      </section>
+      <ProfileSection />
 
       {/* Section Ketiga */}
       <section className="section-container primary-bg py-[50px] px-[20px]">
@@ -82,6 +90,15 @@ function App() {
 
       {/* Section Keenam */}
       <FooterSection />
+
+      {showPlayButton && <div className="fixed bottom-4 left-4">
+        <button
+          onClick={togglePlay}
+          className="p-2 bg-white border rounded-full shadow-lg active:scale-95 text-[10px]"
+        >
+          {mute ? "🔇" : "🔊" }
+        </button>
+      </div>}
     </main>
   )
 }

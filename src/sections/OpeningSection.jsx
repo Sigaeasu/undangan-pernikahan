@@ -1,4 +1,4 @@
-const OpeningSection = () => {
+const OpeningSection = ({ onOpenInvitation }) => {
 
     const basePath = import.meta.env.BASE_URL;
 
@@ -13,12 +13,7 @@ const OpeningSection = () => {
             <p className='font-funnel'>{guestName}</p>
             <button 
                 className="font-funnel primary-text-bg border border-white text-white font-semibold py-2 px-4 rounded hover:bg-g mt-5 active:scale-95"
-                onClick={() => {
-                    const el = document.getElementById("BrideGroom");
-                    if (el) {
-                        el.scrollIntoView({ behavior: "smooth" });
-                    }
-                }}
+                onClick={onOpenInvitation}
             >Open Invitation</button>
         </section>
     )
