@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const GiftSection = () => {
-    const ACCOUNT_NUMBER = "1234-5678-9999";
+    const ACCOUNT_NUMBER = "0154331391";
 
     const [copied, setCopied] = useState(false);
 
@@ -25,7 +25,7 @@ const GiftSection = () => {
             <h1 className='font-poiret text-[24px] primary-text font-bold mb-[24px]'>E-Gift</h1>
             <p className='font-delius text-[12px] mb-[36px]'>Your presence and blessings mean the world to us. If you wish to send a gift, please click the button below.</p>
             
-            <p className='font-funnel text-[12px] mb-[10px]'>BCA - {ACCOUNT_NUMBER} <br/> Lebah Ungu</p>
+            <p className='font-funnel text-[12px] mb-[10px]'>BCA - {ACCOUNT_NUMBER} <br/> Vinsensia Ventilanova</p>
             <button
                 onClick={handleCopy}
                 className="px-[16px] py-[2px] rounded-2xl primary-text bg-white text-white text-[10px] shadow-md hover:bg-primary/80 transition"
