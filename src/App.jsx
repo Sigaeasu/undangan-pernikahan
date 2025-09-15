@@ -5,10 +5,10 @@ import { useRef, useState } from 'react';
 import FooterSection from './sections/FooterSection';
 import GallerySection from './sections/GallerySection';
 import GiftSection from './sections/GiftSection';
+import LocationSection from './sections/LocationSection';
 import OpeningSection from './sections/OpeningSection';
 import ProfileSection from './sections/ProfileSection';
 
-import LocationInfo from './components/LocationInfo';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
   const handleOpenInvitation = () => {
 
     setIsInvitationOpened(true);
-    
+
     // Unmute & play music
     if (audioRef.current) {
       audioRef.current.muted = false;
@@ -61,34 +61,7 @@ function App() {
       <ProfileSection />
 
       {/* Section Ketiga */}
-      <section className="section-container primary-bg py-[50px] px-[20px]">
-        <h1 className="text-center text-[36px] font-poiret primary-text">Save the Date</h1>
-        
-        <div className="relative w-3/4 h-8">
-          <img src={`${basePath}text-divider.png`} alt="text-divider" fill className="object-cover transform scale-y-[0.5] scale-x-[0.5]" />
-        </div>
-        <p className="my-1 text-[14px] font-delius">Saturday, 11th October 2025</p>
-        <div className="relative w-3/4 h-8">
-          <img src={`${basePath}text-divider.png`} alt="text-divider" fill className="object-cover transform scale-y-[-0.5] scale-x-[0.5]" />
-        </div>
-        
-        <div className="h-full flex flex-col items-center justify-around">
-          <LocationInfo 
-            title='Holy Matrimony'
-            date='Saturday, 11th October 2025'
-            time='09:00 WIB - end'
-            locationName='Gereja Santo Petrus Purwosari'
-            locationDetail='Slamet Riyadi St No.370, Penumping, Laweyan, Surakarta City, Central Java 57141'
-          />
-          <LocationInfo 
-            title='Reception'
-            date='Saturday, 11th October 2025'
-            time='11:00 WIB - end'
-            locationName='Gedung Dwidarma (Behind the Church)'
-            locationDetail='Slamet Riyadi St No.370, Penumping, Laweyan, Surakarta City, Central Java 57141'
-          />
-        </div>
-      </section>
+      <LocationSection />
 
       {/* Section Keempat */}
       <GiftSection />
